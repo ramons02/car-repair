@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import br.edu.senai.fatesg.ads3.car_repair.business.ordem_servicos.OrdemServicoModel;
 import br.edu.senai.fatesg.ads3.car_repair.core.domains.BaseModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -24,9 +25,11 @@ public class ServicoModel extends BaseModel {
     @Column(name = "descricao", length = 100, nullable = false)
     private String descricao;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_hora_servico", nullable = false)
     private Date data_hora_servico;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "data_hora_termino", nullable = false)
     private Date data_hora_termino;
 
