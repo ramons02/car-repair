@@ -25,6 +25,6 @@ public class ClienteModel extends BaseModel {
     private String cidade;
     @Column(name = "estado", length = 2)
     private String estado;
-    @Column(name = "cep", length = 8)
+    @Column(name = "cep", length = 15)
     private String CEP;
 }

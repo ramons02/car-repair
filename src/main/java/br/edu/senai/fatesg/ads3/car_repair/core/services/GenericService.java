@@ -118,7 +118,7 @@ public abstract class GenericService<E extends BaseModel, R extends IGenericRepo
             validation.validateDelete(id);
             E entity = findByIdActive(id);
             beforeDelete(entity);
-            entity.setAtivo(true);
+            entity.setAtivo(false);
             repository.save(entity);
             afterDelete(entity);
         } catch (BusinessException | FieldValidationException | RuleValidationException be) {

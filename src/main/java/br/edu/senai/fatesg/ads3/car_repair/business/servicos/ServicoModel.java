@@ -1,6 +1,6 @@
 package br.edu.senai.fatesg.ads3.car_repair.business.servicos;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import br.edu.senai.fatesg.ads3.car_repair.business.ordem_servicos.OrdemServicoModel;
 import br.edu.senai.fatesg.ads3.car_repair.core.domains.BaseModel;
@@ -25,13 +25,13 @@ public class ServicoModel extends BaseModel {
     @Column(name = "descricao", length = 100, nullable = false)
     private String descricao;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "data_hora_servico", nullable = false)
-    private Date data_hora_servico;
+    private LocalDateTime data_hora_servico;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "data_hora_termino", nullable = false)
-    private Date data_hora_termino;
+    private LocalDateTime data_hora_termino;
 
     @Column(name = "mecanico", length = 50, nullable = false)
     private String mecanico;

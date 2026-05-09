@@ -29,13 +29,13 @@ public class OrdemServicoModel extends BaseModel {
     @Column(name = "data_entrada",nullable = false)
     private Date dataEntrada;
 
-    @Column(name = "data_saida",nullable = false)
+    @Column(name = "data_saida", nullable = true)
     private Date dataSaida;
 
     @Column(name = "problema",length = 100,nullable = false)
     private String problema;
 
-    @Column(name = "observacoes",length = 100,nullable = false)
+    @Column(name = "observacoes", length = 100, nullable = true)
     private String observacoes;
     
 }

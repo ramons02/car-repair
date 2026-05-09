@@ -67,8 +67,8 @@ public abstract class GenericController<
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> delete(@PathVariable UUID id) {
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
         service.delete(id);
-        return ResponseEntity.ok("Registro removido com sucesso.");
+        return ResponseEntity.noContent().build();
     }
 }

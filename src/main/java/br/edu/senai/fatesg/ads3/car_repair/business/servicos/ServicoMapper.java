@@ -1,11 +1,15 @@
 package br.edu.senai.fatesg.ads3.car_repair.business.servicos;
 
-import br.edu.senai.fatesg.ads3.car_repair.business.ordem_servicos.OrdemServicoModel;
+import br.edu.senai.fatesg.ads3.car_repair.business.ordem_servicos.IOrdemServicoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import br.edu.senai.fatesg.ads3.car_repair.core.helpers.IGenericMapper;
 
 @Component
 public class ServicoMapper implements IGenericMapper<ServicoModel, ServicoDTO> {
+
+    @Autowired
+    private IOrdemServicoRepository ordemServicoRepository;
 
     @Override
     public ServicoDTO toDto(ServicoModel entity) {
@@ -39,11 +43,8 @@ public class ServicoMapper implements IGenericMapper<ServicoModel, ServicoDTO> {
         entity.setId(dto.getId());
         entity.setAtivo(dto.isActive());
 
-        // CORREÇÃO CRÍTICA: Mapeia o UUID do DTO de volta para um objeto OrdemServicoModel
         if (dto.getOrdemServicoId() != null) {
-            OrdemServicoModel os = new OrdemServicoModel();
-            os.setId(dto.getOrdemServicoId());
-            entity.setOs(os);
+            entity.setOs(ordemServicoRepository.getReferenceById(dto.getOrdemServicoId()));
         }
 
         entity.setDescricao(dto.getDescricao());
