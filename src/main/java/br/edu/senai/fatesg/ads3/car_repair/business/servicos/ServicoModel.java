@@ -33,8 +33,9 @@ public class ServicoModel extends BaseModel {
     @Column(name = "data_hora_termino", nullable = false)
     private LocalDateTime data_hora_termino;
 
-    @Column(name = "mecanico", length = 50, nullable = false)
-    private String mecanico;
+    @ManyToOne
+    @JoinColumn(name = "mecanico_id")
+    private br.edu.senai.fatesg.ads3.car_repair.business.mecanico.MecanicoModel mecanico;
 
     @Column(name = "valor", nullable = false)
     private double valor;

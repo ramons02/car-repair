@@ -11,6 +11,9 @@ public class ServicoMapper implements IGenericMapper<ServicoModel, ServicoDTO> {
     @Autowired
     private IOrdemServicoRepository ordemServicoRepository;
 
+    @Autowired
+    private br.edu.senai.fatesg.ads3.car_repair.business.mecanico.IMecanicoRepository mecanicoRepository;
+
     @Override
     public ServicoDTO toDto(ServicoModel entity) {
         if (entity == null) {
@@ -27,7 +30,8 @@ public class ServicoMapper implements IGenericMapper<ServicoModel, ServicoDTO> {
         dto.setDescricao(entity.getDescricao());
         dto.setDataHoraServico(entity.getData_hora_servico());
         dto.setDataHoraTermino(entity.getData_hora_termino());
-        dto.setMecanico(entity.getMecanico());
+        dto.setMecanicoId(entity.getMecanico() != null ? entity.getMecanico().getId() : null);
+        dto.setNomeMecanico(entity.getMecanico() != null ? entity.getMecanico().getNome() : null);
         dto.setValor(entity.getValor());
 
         return dto;
@@ -50,7 +54,11 @@ public class ServicoMapper implements IGenericMapper<ServicoModel, ServicoDTO> {
         entity.setDescricao(dto.getDescricao());
         entity.setData_hora_servico(dto.getDataHoraServico());
         entity.setData_hora_termino(dto.getDataHoraTermino());
-        entity.setMecanico(dto.getMecanico());
+        
+        if (dto.getMecanicoId() != null) {
+            entity.setMecanico(mecanicoRepository.getReferenceById(dto.getMecanicoId()));
+        }
+        
         entity.setValor(dto.getValor());
 
         return entity;

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
  * @param <S>
  * @param <M>
  */
+@CrossOrigin(origins = "http://localhost:4200")
 public abstract class GenericController<
     E extends BaseModel, 
     D extends BaseDTO, 

@@ -15,6 +15,7 @@ public class ServicoDTO extends BaseDTO {
     private LocalDateTime dataHoraServico;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dataHoraTermino;
-    private String mecanico;
+    private java.util.UUID mecanicoId;
+    private String nomeMecanico;
     private double valor;
 }
