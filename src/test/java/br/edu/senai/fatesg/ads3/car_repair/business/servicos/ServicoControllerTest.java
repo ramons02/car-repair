@@ -48,9 +48,17 @@ public class ServicoControllerTest {
         servicoModel.setId(servicoId);
         servicoModel.setDescricao("Troca de Óleo");
 
+        br.edu.senai.fatesg.ads3.car_repair.business.mecanico.MecanicoModel mecanico = new br.edu.senai.fatesg.ads3.car_repair.business.mecanico.MecanicoModel();
+        UUID mecanicoId = UUID.randomUUID();
+        mecanico.setId(mecanicoId);
+        mecanico.setNome("João Mecânico");
+        servicoModel.setMecanico(mecanico);
+
         servicoDTO = new ServicoDTO();
         servicoDTO.setId(servicoId);
         servicoDTO.setDescricao("Troca de Óleo");
+        servicoDTO.setMecanicoId(mecanicoId);
+        servicoDTO.setNomeMecanico("João Mecânico");
     }
 
     @Test
@@ -61,7 +69,8 @@ public class ServicoControllerTest {
         mockMvc.perform(get("/servicos/{id}", servicoId)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.descricao").value("Troca de Óleo"));
+                .andExpect(jsonPath("$.descricao").value("Troca de Óleo"))
+                .andExpect(jsonPath("$.nomeMecanico").value("João Mecânico"));
     }
 
     @Test

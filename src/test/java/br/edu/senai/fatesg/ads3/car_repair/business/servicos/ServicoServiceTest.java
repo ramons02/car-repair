@@ -46,6 +46,12 @@ public class ServicoServiceTest {
         servicoModel = new ServicoModel();
         servicoModel.setId(servicoId);
         servicoModel.setDescricao("Troca de Óleo");
+        
+        br.edu.senai.fatesg.ads3.car_repair.business.mecanico.MecanicoModel mecanico = new br.edu.senai.fatesg.ads3.car_repair.business.mecanico.MecanicoModel();
+        mecanico.setId(UUID.randomUUID());
+        mecanico.setNome("João Mecânico");
+        servicoModel.setMecanico(mecanico);
+        
         servicoModel.setAtivo(true);
     }
 
