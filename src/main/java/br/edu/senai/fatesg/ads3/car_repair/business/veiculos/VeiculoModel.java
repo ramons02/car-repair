@@ -11,22 +11,22 @@ import lombok.Data;
 @Table(name = "veiculos")
 public class VeiculoModel extends BaseModel {
 
-    @Column(name = "marca", length = 50,nullable = false)
+    @Column(name = "marca", length = 50, nullable = false)
     private String marca;
 
-    @Column(name = "modelo", length = 50,nullable = false)
+    @Column(name = "modelo", length = 50, nullable = false)
     private String modelo;
 
-    @Column(name = "ano_fabricacao", length = 4,nullable = false)
+    @Column(name = "ano_fabricacao", length = 4, nullable = false)
     private String anoFabricacao;
 
-    @Column(name = "ano_modelo", length = 4,nullable = false)
+    @Column(name = "ano_modelo", length = 4, nullable = false)
     private String anoModelo;
 
-    @Column(name = "placa", length = 7, unique = true)
+    @Column(name = "placa", length = 8, unique = true)
     private String placa;
 
-    @Column(name = "cor", length = 20,nullable = false)
+    @Column(name = "cor", length = 20, nullable = false)
     private String cor;
 
 }
