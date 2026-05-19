@@ -38,7 +38,13 @@ public class VeiculoMapper implements IGenericMapper<VeiculoModel, VeiculoDTO> {
         entity.setModelo(dto.getModelo());
         entity.setAnoFabricacao(dto.getAnoFabricacao());
         entity.setAnoModelo(dto.getAnoModelo());
-        entity.setPlaca(dto.getPlaca());
+        
+        if (dto.getPlaca() != null) {
+            entity.setPlaca(dto.getPlaca().toUpperCase().replace("-", ""));
+        } else {
+            entity.setPlaca(null);
+        }
+        
         entity.setCor(dto.getCor());
 
         return entity;
